@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewData["Title"] = "RegesterClient";
+    Layout = "~/Views/Shared/LayoutClient/_LayoutClient.cshtml";
+}
+
+<style>
+    .card-registration .select-input.form-control[readonly]:not([disabled]) {
+        font-size: 1rem;
+        line-height: 2.15;
+        padding-left: .75em;
+        padding-right: .75em;
+    }
+
+    .card-registration .select-arrow {
+        top: 13px;
+    }
+</style>
+@section Scripts{
+    <script src="~/LibrararyClient/ajax/DangKyUser.js"></script>
+}
+
+
+<section class="h-100 bg-gray" style="margin-top:100px">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col">
+                <div class="card card-registration my-4">
+                    <div class="row g-0">
+                        <div class="col-xl-6 d-none d-xl-block" style="padding:0">
+                            <img src="/DocumentImage/Hinh-anh-dong-ho-dep-patel-phillip-dep.jpg"
+                                 alt="Sample photo" class="img-fluid"
+                                 style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; height:100%" />
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card-body p-md-5 text-black">
+                                <h3 class="mb-5 text-uppercase">Đăng ký tài khoản</h3>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-outline">
+                                            <input type="text" id="UserName" class="form-control form-control-lg" />
+                                            <label class="form-label" for="UserName">Tài khoản</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-outline">
+                                            <input type="password" id="PassWord2" class="form-control form-control-lg" />
+                                            <label class="form-label" for="Password">Mật khẩu</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12 mb-4">
+                                        <div class="form-outline">
+                                            <input type="text" id="HoTen" class="form-control form-control-lg" />
+                                            <label class="form-label" for="HoTen">Họ tên</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-4">
+                                        <div class="form-outline">
+                                            <input type="text" id="DiaChi" class="form-control form-control-lg" />
+                                            <label class="form-label" for="form3Example1n1">Địa chỉ</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <input type="text" id="SoDienThoai" class="form-control form-control-lg" />
+                                    <label class="form-label" for="form3Example8">Số điện thoại</label>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <input type="text" id="Email" class="form-control form-control-lg" />
+                                    <label class="form-label" for="form3Example9">Email</label>
+                                </div>
+
+                                <div class="d-flex justify-content-end pt-3">
+                                    <button type="button" id="btnDangKy" class="btn btn-warning btn-lg ms-2" style="margin-right:5px">Đăng ký</button>
+                                    <a asp-controller="LoginClient" asp-action="LoginClient"><button type="button" class="btn btn-warning btn-lg ms-2">Đăng nhập</button></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

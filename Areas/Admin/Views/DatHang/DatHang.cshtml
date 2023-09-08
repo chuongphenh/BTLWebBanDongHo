@@ -1,0 +1,162 @@
+﻿@{
+    ViewData["Title"] = "SanPhamDetail";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Đặt hàng</title>
+
+    <link href="~/libararyadmin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/libararyadmin/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="~/libararyadmin/css/animate.css" rel="stylesheet">
+    <link href="~/libararyadmin/css/style.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <div id="page" class="white-bg">
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-10">
+                    <h2>Đặt hàng sản phẩm</h2>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="index.html">Trang chủ</a>
+                        </li>
+                        <li>
+                            <a>Đặt hàng</a>
+                        </li>
+                        <li class="active">
+                            <strong>Trạng thái đơn hàng</strong>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-lg-2">
+                </div>
+            </div>
+
+            <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="row">
+                    <div class="col-md-9">
+
+                        <div class="ibox">
+                            <div class="ibox-title">
+                                <span class="pull-right"> Sản phẩm đã chọn</span>
+                                <h5>Sản phẩm đặt mua</h5>
+                            </div>
+                            <div id="lstDonHang">
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-md-3">
+
+                        <div class="ibox">
+                            <div class="ibox-title">
+                                <h5>Tổng tiền</h5>
+                            </div>
+                            <div class="ibox-content">
+                                <h2 class="font-bold" id="TongTien">
+                                </h2>
+
+                                <hr />
+                              
+                                <div class="m-t-sm">
+                                    <div class="btn-group">
+                                        <a href="#" class="btn btn-primary btn-sm" id="btnMuaHang" ><i class="fa fa-shopping-cart"></i> Mua Hàng</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ibox">
+                            <div class="ibox-title">
+                                <h5>Support</h5>
+                            </div>
+                            <div class="ibox-content text-center">
+
+
+
+                                <h3><i class="fa fa-phone"></i> +84 332581817</h3>
+                                <span class="small">
+                                    Liên hệ để được tư vấn.dịch vụ 24/24
+                                </span>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script id="data-datHang" type="x-tmpl-mustache">
+        <div class="ibox-content">
+                            <div class="table-responsive">
+                                <table class="table shoping-cart-table">
+                                    <tbody>
+                                        <tr>
+                                            <td width="90">
+                                                <div class="">
+                                                    <img class="img-responsive" src="{{urlFile}}" alt="">
+                                                </div>
+                                            </td>
+                                            <td class="desc">
+                                                <h3>
+                                                    <a href="#" class="text-navy">
+                                                        {{TenLoai}}
+                                                    </a>
+                                                </h3>
+
+                                                <div class="m-t-sm">
+                                                    <a href="javascript:myController.DeleateData({{IdChiTietDonDat}})" class="text-muted"><i class="fa fa-trash"></i> Xóa</a>
+                                                </div>
+                                            </td>
+
+                                            <td>
+                                                VNĐ{{GiaBan}}
+                                                <s class="small text-muted">VNĐ{{GiaSale}}</s>
+                                            </td>
+                                            <td width="65">
+                                                <input type="text" class="form-control" placeholder="1">
+                                            </td>
+                                            <td>
+                                                <h4>
+                                                {{GiaBan}}
+                                                </h4>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                         </div>
+    </script>
+
+
+
+    <!-- Mainly scripts -->
+    <script src="~/libararyadmin/js/jquery-3.1.1.min.js"></script>
+    <script src="~/libararyadmin/js/bootstrap.min.js"></script>
+    <script src="~/libararyadmin/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="~/libararyadmin/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="~/libararyadmin/js/inspinia.js"></script>
+    <script src="~/libararyadmin/js/plugins/pace/pace.min.js"></script>
+    <script src="~/plugin/mustache/mustache.min.js"></script>
+    <script src="~/librararyclient/ajax/donhang.js"></script>
+</body>
+
+</html>

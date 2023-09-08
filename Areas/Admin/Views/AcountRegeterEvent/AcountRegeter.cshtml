@@ -1,0 +1,127 @@
+﻿@{
+    ViewData["Title"] = "Đăng ký";
+    Layout = "~/Views/Shared/LayoutAdmin/_LayoutAdmin.cshtml";
+}
+<style>
+    .table-warning > tbody > tr {
+        background-color: #fff8c4;
+    }
+
+    .hvr-shrink {
+        display: inline-block;
+        vertical-align: middle;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+
+</style>
+
+@section Scripts{
+    <script src="~/libararyadmin/js/plugins/datatables/datatables.min.js"></script>
+    <script src="~/libararyadmin/noti/notify.min.js"></script>
+    <script src="~/libararyadmin/ajax/dangkytaikhoan.js"></script>
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Đăng ký thành viên</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">Trang chủ</a>
+            </li>
+            <li>
+                <a>Đăng ký</a>
+            </li>
+            <li class="active">
+                <a href="#modal-form" data-toggle="modal" style="color:cadetblue" id="DanhSachTaiKhoan"><strong>Danh sách tài khoản</strong></a>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+
+<div class="row wrapper border-bottom white-bg ibox-body m-t-5" style="margin-top: 10px;">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <button type="button" class="btn btn-outline btn-primary btn-sm" id="btnTaoMoi"><i class="fa fa-plus"></i>Tạo mới</button>
+            <button type="button" class="btn btn-outline btn-success btn-sm" style=" font-size:14px;background-image: linear-gradient(to right,  #64d4ff, #ffffff);" id="btnLuu"><i class="fa fa-pencil"></i>Đăng ký</button>
+
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-2">
+                    <div class="col-sm-12 bg-c-purple user-profile" style="background:#efefef">
+                        <div class="text-center text-white">
+                            <div class="m-b-5" style="padding:15px">
+                                <a target="_blank" id="image_HoSo2" href="#">
+                                    <img alt="image" id="image_HoSoX" class=" m-t-xs img-fluid" width="115" src="~/documentimage/user-286.png">
+                                </a>
+                            </div>
+                            <label href="#" for="inputFileUpload" class="text-info hvr-shrink  dd-handle" style="cursor:pointer">
+                                <i class="ti-image"></i> Upload
+                                <input type="file" id="inputFileUpload" style="display:none">
+                                <input type="hidden" id="is_thay_doi" />
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-10">
+                    <input class="form-control" id="UserId" type="hidden">
+                    <div class="form-group col-sm-6"><label>Tài khoản<font color="red">*</font>: </label> <input type="text" placeholder="nhập tài khoản ..." class="form-control" id="UserName"></div>
+                    <div class="form-group col-sm-6"><label>Mật khẩu:<font color="red">*</font></label> <input type="password" placeholder="nhập mật khẩu ..." class="form-control" id="PassWord"></div>
+                    <div class="form-group col-sm-6"><label>Ngày Sinh</label> <input type="date" class="form-control" id="NgaySinh"></div>
+                    <div class="form-group col-sm-6"><label>Email</label> <input type="email" placeholder="nhập email ..." class="form-control" id="Email"></div>
+                    <div class="form-group col-sm-6">
+                        <label>Giới tính</label>
+                        <select class="form-control" id="GioiTinh">
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-6"><label>Số điện thoại</label> <input type="number" placeholder="nhập số điện thoại" class="form-control" id="SoDienThoai"></div>
+                    <div class="form-group col-sm-6">
+                        <div class="i-checks"><label> <input type="checkbox" id="isAdMin" value="false"> <i></i> Quản trị viên </label></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="modal-form" class="modal fade" aria-hidden="true">
+    <div class="modal-dialog model-lg" style="height:30%; width:90%">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="form-group row" style="padding-left:15px">
+                    <button type="button" class="btn btn-w-m btn-danger btn-sm" data-dismiss="modal"><i class="fa fa-backward"></i> Quay lại</button>
+                </div>
+                <div class="row">
+                    <div class="ibox-content">
+                        <div class="table-responsive">
+                            <table id="tblTaiKhoan"
+                                   data-classes="table table-striped table-bordered table-hover"
+                                   data-toggle="table"
+                                   data-mobile-responsive="true"
+                                   data-search="true"
+                                   data-fixed-columns="true"
+                                   data-show-export="true"
+                                   data-pagination="true"
+                                   data-page-size="5"
+                                   data-page-list="[15, 25, 35, all]">
+                                <thead>
+                                    <tr>
+                                        <th data-field="userName" data-formatter="TenTaiKhoan">Tài khoản</th>
+                                        <th data-field="soDienThoai">Số điện thoại</th>
+                                        <th data-field="gioiTinh">Giới tính</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

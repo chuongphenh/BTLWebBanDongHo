@@ -1,0 +1,298 @@
+﻿@{
+    ViewData["Title"] = "Đăng ký";
+    Layout = "~/Views/Shared/LayoutAdmin/_LayoutAdmin.cshtml";
+}
+
+@section Scripts{
+    <script src="~/libararyadmin/js/plugins/datatables/datatables.min.js"></script>
+    <script src="~/libararyadmin/noti/notify.min.js"></script>
+    <script src="~/libararyadmin/js/plugins/chosen/chosen.jquery.js"></script>
+    <script src="~/libararyadmin/ajax/quanlydongho.js"></script>
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Danh sách đồng hồ</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">Trang chủ</a>
+            </li>
+            <li>
+                <a>Quản lý đồng hồ</a>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+<div class="row wrapper border-bottom white-bg ibox-body m-t-5" style="margin-top: 10px;">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <button type="button" href="#modal-form" data-toggle="modal" class="btn btn-success btn-sm" id="btnTaoMoi"><i class="fa fa-plus"></i>Tạo mới</button>
+            <button type="button" class="btn btn-primary btn-sm" id="btnTimKiem"><i class="fa fa-search"></i>Tìm kiếm</button>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="tabs-container">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab-1">Danh mục đồng hồ</a></li>
+                        <li class=""><a data-toggle="tab" href="#tab-2">Thêm hình ảnh sản phẩm</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane active">
+                            <div class="panel-body">
+                                <div class="col-sm-12">
+                                    <div class="ibox-content">
+                                        <div class="table-responsive">
+                                            <table id="tblDongHo"
+                                                   data-classes="table table-striped table-bordered table-hover"
+                                                   data-toggle="table"
+                                                   data-mobile-responsive="true"
+                                                   data-search="true"
+                                                   data-fixed-columns="true"
+                                                   data-show-export="true"
+                                                   data-pagination="true"
+                                                   data-page-size="5"
+                                                   data-page-list="[15, 25, 35, all]">
+                                                <thead>
+                                                    <tr>
+                                                        <th data-field="ChucNang" data-width="5" data-formatter="ChucNang">Chức năng</th>
+                                                        <th data-field="maCode" data-sortable='true'>Mã Code</th>
+                                                        <th data-field="tenLoai" data-sortable='true'>Tên đồng hồ</th>
+                                                        <th data-field="hangSanXuat" data-sortable='true'>Hãng Sản Xuất</th>
+                                                        <th data-field="soLuong">Số lượng</th>
+                                                        <th data-field="kieuDang">Kiểu dáng</th>
+                                                        <th data-field="dungLuong">Dung lượng</th>
+                                                        <th data-field="active">Trạng thái</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-2" class="tab-pane">
+                            <div class="panel-body">
+
+                                <div class="col-sm-12 col-md-12" id="lstChiTietDongHo">
+                                </div>
+
+                                <script id="data-dong-ho" type="x-tmpl-mustache">
+                                       <div class="col-md-2">
+                                        <div class="ibox">
+                                            <div class="ibox-content product-box">
+                                                <div class="product-imitation" style="padding:0">
+                                                    <a href="{{urlFile}}" target="blank" class="product-name">
+                                                       <img src="{{urlFile}}" class="img-responsive" style="width:100%;height:170px"/>
+                                                    </a>
+                                                </div>
+                                                <div class="product-desc">
+                                                    <small class="text-muted">tên đồng hồ :</small>
+                                                    <a href="#" class="product-name">{{TenDongHo}}</a>
+                                                    <small class="text-muted"><a href="javascript:myController.ThemChiTietAnh({{idDongHo}})" class="text-danger">Thêm ảnh phụ <i class="fa fa-pencil"></i></a></small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </script>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+<div id="modal-form" class="modal fade" aria-hidden="true">
+    <div class="modal-dialog model-lg" style="height:auto; width:95%">
+        <div class="modal-content">
+
+            <div class="ibox float-e-margins">
+
+                <div class="modal-header" style="text-align:center">
+                    <h3>Chi tiết đồng hồ</h3>
+                </div>
+                <div class="ibox-title">
+                    <button type="button" class="btn btn-w-m btn-danger btn-sm" data-dismiss="modal"><i class="fa fa-backward"></i> Thoát</button>
+                    <button type="button" class="btn btn-w-m btn-success btn-sm" id="btnLuuDongHo"><i class="fa fa-save"></i> Lưu</button>
+                </div>
+                <div class="hr-line">
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="col-sm-2">
+                            <div class="col-sm-12 bg-c-purple user-profile" style="background:#efefef;height:200px">
+                                <div class="text-center text-white">
+                                    <div class="m-b-5" style="padding:15px">
+                                        <a target="_blank" id="image_HoSo2" href="#">
+                                            <img alt="image" id="image_HoSoX" class=" m-t-xs img-fluid" width="115" src="~/documentimage/user-286.png">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="control-label">Chọn tài liệu:</label>
+                                    <div class="input-group col-md-12">
+                                        <input type="file" id="inputFileUpload" style="width:auto" />
+                                        <span class="input-group-btn">
+                                            <button type="button" id="btn_remove_file" class="btn btn-danger" style="height: 34px;"><i class="fa fa-remove"></i></button>
+                                        </span>
+                                        <input type="hidden" id="is_thay_doi" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-10">
+                            <input type="hidden" class="form-control" id="IdDongHo">
+                            <div class="form-group col-sm-3">
+                                <label>Mã code<font color="red">*</font>: </label>
+                                <input type="text" placeholder="nhập mã code ..." class="form-control" id="MaCode">
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <label>Tên Loại<font color="red">*</font>: </label>
+                                <select class="form-control chosen" id="TenLoai">
+                                    <option value="">--Chọn tên đồng hồ--</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <label>Chất Liệu mặt: </label>
+                                <select class="form-control chosen" id="cbChatLieuMat">
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <label>Chất liệu dây: </label>
+                                <select class="form-control chosen" id="cbChatLieuDay">
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-3" style="clear:both">
+                                <label>Chất liệu vỏ: </label>
+                                <select class="form-control chosen" id="cbChatLieuVo">
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <label>Ngày tạo:</label>
+                                <input type="date" placeholder="" class="form-control" id="dtNgayTao">
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <label>Giá bán<font color="red">*</font>:</label>
+                                <input type="number" placeholder="" class="form-control" id="GiaBan">
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <label>Sale</label>
+                                <select class="form-control" id="Sale">
+                                    <option value="">--Chọn % sale--</option>
+                                    <option value="5">5%</option>
+                                    <option value="10">10%</option>
+                                    <option value="15">15%</option>
+                                    <option value="50">50%</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <label>Số lượng: </label>
+                                <input type="text" placeholder="" class="form-control" id="SoLuong">
+                            </div>
+
+                            <div class="form-group col-sm-3">
+                                <label>Kiểu dáng: </label>
+                                <input type="text" placeholder="" class="form-control" id="KieuDang">
+                            </div>
+
+                            <div class="form-group col-sm-3">
+                                <label>Dung lượng(w): </label>
+                                <input type="text" placeholder="" class="form-control" id="DungLuong">
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <label>Đường kính(cm):</label>
+                                <input type="number" placeholder="" class="form-control" id="DuongkinhMat">
+                            </div>
+
+                            <div class="form-group col-sm-3">
+                                <label>Kích thước dây(cm):</label>
+                                <input type="number" placeholder="" class="form-control" id="KichThuocDay">
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <label>Kích thước vỏ(cm):</label>
+                                <input type="number" placeholder="" class="form-control" id="KichThuocVo">
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <label>Bảo hành(tháng):</label>
+                                <input type="number" placeholder="" class="form-control" id="BaoHanh">
+                            </div>
+
+                            <div class="form-group col-sm-6">
+                                <div class="i-checks"><label> <input type="checkbox" id="ChiuNuoc" value="false"> <i></i> Có chống nước </label></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-form2" class="modal fade" aria-hidden="true">
+    <div class="modal-dialog model-lg" style="height:30%; width:50%">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="form-group row" style="padding-left:15px">
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fa fa-backward"></i> Thoát</button>
+                    <button type="button" class="btn btn-info btn-sm" id="btnUploadFileDH"><i class="fa fa-upload"></i> Tải lên</button>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="control-label">Chọn tài liệu:</label>
+                            <div class="input-group col-md-12">
+                                <input type="file" id="inputFileUpload2"/>
+                                <span class="input-group-btn">
+                                    <button type="button" id="btn_remove_file2" class="btn btn-danger" style="height: 34px;"><i class="fa fa-remove"></i></button>
+                                </span>
+                                <input type="hidden" id="is_thay_doi" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="ibox ">
+                            <div class="ibox-title" style="background:#41bbdc">
+                                <h5 style="color:white">Hình ảnh đính kèm</h5>
+                            </div>
+                            <div class="ibox-conten  truncate1 fh-150 is-truncated row" style="overflow-wrap: break-word;">
+                                <div class="col-sm-12 col-md-12" id="lstChiTietDongHoCon">
+                                </div>
+                                <script id="data-dong-ho-con" type="x-tmpl-mustache">
+                                       <div class="col-md-3">
+                                        <div class="ibox">
+                                            <div class="ibox-content product-box">
+                                                <div class="product-imitation" style="padding:0">
+                                                    <a href="{{urlFile_Con}}" target="blank" class="product-name">
+                                                       <img src="{{urlFile_Con}}" class="img-responsive" style="width:100%;"/>
+                                                    </a>
+                                                </div>
+                                                  <div class="product-desc">
+                                                    <small class="text-muted"><a href="javascript:myController.DeleteAnhCon({{IdDocument}})" class="text-danger">Xóa <i class="fa fa-remove"></i></a></small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

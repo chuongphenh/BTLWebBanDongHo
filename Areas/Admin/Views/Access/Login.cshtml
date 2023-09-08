@@ -1,0 +1,81 @@
+﻿@using WebBanDongHo.Models;
+@{
+    Layout = null;
+}
+
+@model UserLogin
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Đăng nhập hệ thống</title>
+    <link href="~/libararyadmin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/libararyadmin/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="~/libararyadmin/css/animate.css" rel="stylesheet">
+    <link href="~/libararyadmin/css/style.css" rel="stylesheet">
+    <script src="~/libararyadmin/js/jquery-3.1.1.min.js"></script>
+</head>
+
+<body class="bg" style="background-image: linear-gradient(305deg, white, #44837a);">
+
+    <div class="loginColumns animated fadeInDown">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="font-bold">Giới thiệu về chúng tôi</h2>
+                <div class="item gallery next left">
+                    <div class="row">
+                        <div class="col-sm-12">
+                           <img alt="image" class="img-responsive" src="~/documentimage/dong-ho-doi-2.jpg" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="ibox-content">
+                    @using (Html.BeginForm("Login", "Access", FormMethod.Post, new { @class = "m-t", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", autofocus = "autofocus", placeholder = "Tài khoản" })
+                            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Mật khẩu" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+                        <button type="submit" class="btn btn-primary block full-width m-b">Đăng nhập</button>
+                        <button onclick="FaceBookApi()"  class="btn btn-primary block full-width m-b">Đăng nhập Facebook</button>
+                        <fb:login-button scope="public_profile,email"
+                                         onlogin="checkLoginState();">
+                        </fb:login-button>
+                    }
+
+                    <a href="#">
+                        <small>Forgot password?</small>
+                    </a>
+                    <p class="m-t">
+                        <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                Copyright Example Company
+            </div>
+            <div class="col-md-6 text-right">
+                <small>© 2014-2015</small>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

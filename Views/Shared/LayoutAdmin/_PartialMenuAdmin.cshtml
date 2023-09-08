@@ -1,0 +1,64 @@
+﻿<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element">
+                    <span>
+                        <img alt="image" class="img-circle" id="ImageUser" src="~/documentimage/user-286.png" width="160px" />
+                    </span>
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <span class="clear">
+                            <span class="block m-t-xs">
+                                <strong class="font-bold"></strong>
+                            </span>
+                            <span class="text-muted text-xs block"><span id="userName"></span><b class="caret"></b></span>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                        <li><a href="profile.html">Thông tin</a></li>
+                        <li class="divider"></li>
+                        <li><a asp-controller="Access" asp-action="Logout">Thoát</a></li>
+                    </ul>
+                </div>
+                <div class="logo-element" style="background: #367a97;">
+                    <img alt="image" class="img-circle" id="ImageUser2" src="~/documentimage/user-286.png" width="60px" />
+                </div>
+            </li>
+            @if (User.IsInRole("admin"))
+            {
+                <li>
+                    <a asp-controller="Home" asp-action="DashBoard"><i class="fa fa-th-large"></i> <span class="nav-label">Trang Chủ</span></a>
+                </li>
+                <li class="special_link">
+                    <a asp-controller="C_QuanLyDongHo" asp-action="QuanLyDongHo" style="background:#2f4040"><i class="fa fa-clock-o"></i> <span class="nav-label">Quản lý đồng hồ</span></a>
+                </li>
+                <li class="special_link">
+                    <a asp-controller="AcountRegeterEvent" asp-action="AcountRegeter" style="background:#2f4040"><i class="fa fa-user"></i> <span class="nav-label">Đăng ký tài khoản</span></a>
+                </li>
+                <li class="special_link">
+                    <a asp-controller="DanhMucHeThong" asp-action="ViewDanhMucHeThong" style="background:#2f4040"><i class="fa fa-book"></i> <span class="nav-label">Danh mục hệ thống</span></a>
+                </li>
+                <li class="special_link">
+                    <a asp-controller="DanhMucDongHo" asp-action="ViewDanhMucDongHo" style="background:#2f4040"><i class="fa fa-list-alt "></i> <span class="nav-label">Danh mục đồng hồ</span></a>
+                </li>
+                <li class="special_link">
+                    <a asp-controller="DuyetDonHang" asp-action="DuyetDonHang" style="background:#2f4040"><i class="fa fa-shopping-cart "></i> <span class="nav-label">Duyệt đặt hàng</span></a>
+                </li>
+            }
+            else if (User.IsInRole("Client"))
+            {
+                <li>
+                    <a asp-controller="Home" asp-action="DashBoard"><i class="fa fa-th-large"></i> <span class="nav-label">Trang Chủ</span></a>
+                </li>
+                <li class="special_link">
+                    <a asp-controller="C_QuanLyDongHo" asp-action="QuanLyDongHo" style="background:#2f4040"><i class="fa fa-clock-o"></i> <span class="nav-label">Quản lý đồng hồ</span></a>
+                </li>
+                <li class="special_link">
+                    <a asp-controller="AcountRegeterEvent" asp-action="AcountRegeter" style="background:#2f4040"><i class="fa fa-user"></i> <span class="nav-label">Đăng ký tài khoản</span></a>
+                </li>
+            }
+        
+        </ul>
+
+    </div>
+</nav>

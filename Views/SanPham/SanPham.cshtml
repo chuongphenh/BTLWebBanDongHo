@@ -1,0 +1,475 @@
+﻿
+@{
+    ViewData["Title"] = "SanPham";
+    Layout = "~/Views/Shared/LayoutClient/_LayoutClient.cshtml";
+}
+<link rel="stylesheet" type="text/css" href="~/LayoutKhachHang/styles/categories_styles.css">
+<link rel="stylesheet" type="text/css" href="~/LayoutKhachHang/styles/categories_responsive.css">
+<style>
+	.organic-breadcrumb2{
+			background: url(/Hinh-anh-dong-ho-dep-sang-trong-va-an-tuong.jpg) center no-repeat;
+			background-size: cover;
+			padding-top: 130px;
+	}
+
+	
+</style>
+
+@section Scripts{
+	<script src="~/plugin/mustache/mustache.min.js"></script>
+	<script src="~/Plugin/jquery.twbspagination.min.js"></script>
+	<script src="~/LibrararyClient/ajax/SanPham.js"></script>
+}
+@*<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb2">
+	<div class="container">
+		<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+			<div class="col-first">
+				<h1>Sản phẩm</h1>
+				<nav class="d-flex align-items-center">
+					<a href="index.html">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+					<a href="#">Sản phẩm<span class="lnr lnr-arrow-right"></span></a>
+					<a href="category.html">Danh mục sản phẩm</a>
+				</nav>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End Banner Area -->
+
+<div class="container" style="margin-top:20px">
+	<div class="row">
+		<div class="col-xl-3 col-lg-4 col-md-5">
+			<div class="sidebar-categories" >
+				<div class="head" style="background:#e72121">Thương hiệu</div>
+				<ul class="main-categories" id="lstThuongHieu" style="padding:0" >
+							
+				</ul>
+				<script id="data-thuong-hieu" type="x-tmpl-mustache">
+					<li class="main-nav-list child"><a href="javascript:myController.CTSanPham('{{TenThuongHieu}}')">{{TenThuongHieu}}<span class="number">({{SoLuong}})</span></a></li>
+				</script>
+
+			</div>
+			<div class="sidebar-filter mt-50">
+				<div class="common-filter">
+					<div class="head">Khúc Giá</div>
+					<div class="price-range-area">
+						<div id="price-range"></div>
+						<div class="value-wrapper d-flex">
+							<div class="price">Price:</div>
+							<span>vnd</span>
+							<div id="lower-value"></div>
+							<div class="to">to</div>
+							<span>vnd</span>
+							<div id="upper-value"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xl-9 col-lg-8 col-md-7">
+			<!-- Start Filter Bar -->
+			<div class="filter-bar d-flex flex-wrap align-items-center">
+				
+			</div>
+			<!-- End Filter Bar -->
+			<!-- Start Best Seller -->
+			<section class="lattest-product-area pb-40 category-list">
+				<div class="row pagination" id="lstChiTietDongHo">
+					
+
+
+				</div>
+			</section>
+
+			<div class="align-items-center">
+				<div class="pagination" id="pagination" style="border-left:0;margin:0 auto">
+				</div>
+			</div>
+
+			
+
+			<script id="data-dong-ho" type="x-tmpl-mustache">
+				<div class="col-lg-4 col-md-6">
+					<div class="single-product">
+						<img class="img-fluid" src="{{urlFile}}" alt="">
+						<div class="product-details">
+							<h6>{{TenDongHo}}</h6>
+							<div class="price">
+								<h6 style="color:red">{{GiaBan}}</h6>
+								<h6 class="l-through">{{GiaSale}}</h6>
+							</div>
+							<div class="prd-bottom">
+								<a href="" class="social-info">
+									<span class="ti-bag"></span>
+									<p class="hover-text">Đặt hàng</p>
+								</a>
+								<a href="javascript:myController.DetailSanPham({{IdDongHo}})" class="social-info" >
+									<span class="lnr lnr-move"></span>
+									<p class="hover-text">Xem chi tiết</p>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</script>
+			<!-- End Best Seller -->
+		
+			<!-- End Filter Bar -->
+		</div>
+	</div>
+</div>
+
+<!-- Start related-product Area -->
+<section class="related-product-area section_gap">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-6 text-center">
+				<div class="section-title">
+					<h1>Deals of the Week</h1>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+						magna aliqua.
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-9">
+				<div class="row">
+					<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+						<div class="single-related-product d-flex">
+							<a href="#"><img src="img/r1.jpg" alt=""></a>
+							<div class="desc">
+								<a href="#" class="title">Black lace Heels</a>
+								<div class="price">
+									<h6>$189.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+						<div class="single-related-product d-flex">
+							<a href="#"><img src="img/r2.jpg" alt=""></a>
+							<div class="desc">
+								<a href="#" class="title">Black lace Heels</a>
+								<div class="price">
+									<h6>$189.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+						<div class="single-related-product d-flex">
+							<a href="#"><img src="img/r3.jpg" alt=""></a>
+							<div class="desc">
+								<a href="#" class="title">Black lace Heels</a>
+								<div class="price">
+									<h6>$189.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+						<div class="single-related-product d-flex">
+							<a href="#"><img src="img/r5.jpg" alt=""></a>
+							<div class="desc">
+								<a href="#" class="title">Black lace Heels</a>
+								<div class="price">
+									<h6>$189.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+						<div class="single-related-product d-flex">
+							<a href="#"><img src="img/r6.jpg" alt=""></a>
+							<div class="desc">
+								<a href="#" class="title">Black lace Heels</a>
+								<div class="price">
+									<h6>$189.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+						<div class="single-related-product d-flex">
+							<a href="#"><img src="img/r7.jpg" alt=""></a>
+							<div class="desc">
+								<a href="#" class="title">Black lace Heels</a>
+								<div class="price">
+									<h6>$189.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-6">
+						<div class="single-related-product d-flex">
+							<a href="#"><img src="img/r9.jpg" alt=""></a>
+							<div class="desc">
+								<a href="#" class="title">Black lace Heels</a>
+								<div class="price">
+									<h6>$189.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-6">
+						<div class="single-related-product d-flex">
+							<a href="#"><img src="img/r10.jpg" alt=""></a>
+							<div class="desc">
+								<a href="#" class="title">Black lace Heels</a>
+								<div class="price">
+									<h6>$189.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-6">
+						<div class="single-related-product d-flex">
+							<a href="#"><img src="img/r11.jpg" alt=""></a>
+							<div class="desc">
+								<a href="#" class="title">Black lace Heels</a>
+								<div class="price">
+									<h6>$189.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="ctg-right">
+					<a href="#" target="_blank">
+						<img class="img-fluid d-block mx-auto" src="img/category/c5.jpg" alt="">
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End related-product Area -->
+*@
+
+<div class="container product_section_container">
+	<div class="row">
+		<div class="col product_section clearfix">
+
+			<!-- Breadcrumbs -->
+
+			<div class="breadcrumbs d-flex flex-row align-items-center">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li class="active"><a href="index.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Men's</a></li>
+				</ul>
+			</div>
+
+			<!-- Sidebar -->
+
+			<div class="sidebar">
+				<div class="sidebar_section">
+					<div class="sidebar_title">
+						<h5>Thương hiệu</h5>
+					</div>
+					<ul class="sidebar_categories" id="lstThuongHieu">
+					
+					</ul>
+				</div>
+				<script id="data-thuong-hieu" type="x-tmpl-mustache">
+						<li class="active"><a href="javascript:myController.CTSanPham('{{TenThuongHieu}}')"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>{{TenThuongHieu}}<span class="number">({{SoLuong}})</span></a></li>
+				</script>
+
+				<!-- Price Range Filtering -->
+				<div class="sidebar_section">
+					<div class="sidebar_title">
+						<h5>Filter by Price</h5>
+					</div>
+					<p>
+						<input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+					</p>
+					<div id="slider-range"></div>
+					<div class="filter_button"><span>filter</span></div>
+				</div>
+
+				<!-- Sizes -->
+				<div class="sidebar_section">
+					<div class="sidebar_title">
+						<h5>Sizes</h5>
+					</div>
+					<ul class="checkboxes">
+						<li><i class="fa fa-square-o" aria-hidden="true"></i><span>S</span></li>
+						<li class="active"><i class="fa fa-square" aria-hidden="true"></i><span>M</span></li>
+						<li><i class="fa fa-square-o" aria-hidden="true"></i><span>L</span></li>
+						<li><i class="fa fa-square-o" aria-hidden="true"></i><span>XL</span></li>
+						<li><i class="fa fa-square-o" aria-hidden="true"></i><span>XXL</span></li>
+					</ul>
+				</div>
+
+				<!-- Color -->
+				<div class="sidebar_section">
+					<div class="sidebar_title">
+						<h5>Color</h5>
+					</div>
+					<ul class="checkboxes">
+						<li><i class="fa fa-square-o" aria-hidden="true"></i><span>Black</span></li>
+						<li class="active"><i class="fa fa-square" aria-hidden="true"></i><span>Pink</span></li>
+						<li><i class="fa fa-square-o" aria-hidden="true"></i><span>White</span></li>
+						<li><i class="fa fa-square-o" aria-hidden="true"></i><span>Blue</span></li>
+						<li><i class="fa fa-square-o" aria-hidden="true"></i><span>Orange</span></li>
+						<li><i class="fa fa-square-o" aria-hidden="true"></i><span>White</span></li>
+						<li><i class="fa fa-square-o" aria-hidden="true"></i><span>Blue</span></li>
+						<li><i class="fa fa-square-o" aria-hidden="true"></i><span>Orange</span></li>
+						<li><i class="fa fa-square-o" aria-hidden="true"></i><span>White</span></li>
+						<li><i class="fa fa-square-o" aria-hidden="true"></i><span>Blue</span></li>
+						<li><i class="fa fa-square-o" aria-hidden="true"></i><span>Orange</span></li>
+					</ul>
+					<div class="show_more">
+						<span><span>+</span>Show More</span>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- Main Content -->
+
+			<div class="main_content">
+
+				<!-- Products -->
+
+				<div class="products_iso">
+					<div class="row">
+						<div class="col">
+
+							<!-- Product Sorting -->
+
+							<div class="product_sorting_container product_sorting_container_top">
+								<ul class="product_sorting">
+									<li>
+										<span class="type_sorting_text">Default Sorting</span>
+										<i class="fa fa-angle-down"></i>
+										<ul class="sorting_type">
+											<li class="type_sorting_btn" data-isotope-option='{ "sortBy": "original-order" }'><span>Default Sorting</span></li>
+											<li class="type_sorting_btn" data-isotope-option='{ "sortBy": "price" }'><span>Price</span></li>
+											<li class="type_sorting_btn" data-isotope-option='{ "sortBy": "name" }'><span>Product Name</span></li>
+										</ul>
+									</li>
+									<li>
+										<span>Show</span>
+										<span class="num_sorting_text">6</span>
+										<i class="fa fa-angle-down"></i>
+										<ul class="sorting_num">
+											<li class="num_sorting_btn"><span>6</span></li>
+											<li class="num_sorting_btn"><span>12</span></li>
+											<li class="num_sorting_btn"><span>24</span></li>
+										</ul>
+									</li>
+								</ul>
+								<div class="pages d-flex flex-row align-items-center">
+									<div class="page_current">
+										<span>1</span>
+										<ul class="page_selection">
+											<li><a href="#">1</a></li>
+											<li><a href="#">2</a></li>
+											<li><a href="#">3</a></li>
+										</ul>
+									</div>
+									<div class="page_total"><span>of</span> 3</div>
+									<div id="next_page" class="page_next"><a href="#"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
+								</div>
+
+							</div>
+
+							<!-- Product Grid -->
+
+							<div class="product-grid row" id="lstChiTietDongHo">
+
+								<!-- Product 1 -->
+							</div>
+
+							
+
+							<script id="data-dong-ho" type="x-tmpl-mustache">
+								<div class="product-item man col-lg-3 p-0">
+									<div class="product discount product_filter">
+										<div class="product_image">
+											<img src="{{urlFile}}"  alt="">
+										</div>
+										<div class="favorite favorite_left"></div>
+										<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>
+										<div class="product_info">
+											<h6 class="product_name"><a  href="javascript:myController.DetailSanPham({{IdDongHo}})">{{TenDongHo}}</a></h6>
+											<div class="product_price">{{GiaBan}}<span>{{GiaSale}}</span></div>
+										</div>
+									</div>
+									<div class="red_button add_to_cart_button" style="margin:0"><a href="#">add to cart</a></div>
+								</div>
+
+							</script>
+					</div>
+						@*<div class="pages d-flex flex-row align-items-center">
+							<div class="page_current">
+								
+							</div>
+							<div id="pagination" class="page_next"><a href="#"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
+						</div>*@
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+<!-- Benefit -->
+
+<div class="benefit">
+	<div class="container">
+		<div class="row benefit_row">
+			<div class="col-lg-3 benefit_col">
+				<div class="benefit_item d-flex flex-row align-items-center">
+					<div class="benefit_icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
+					<div class="benefit_content">
+						<h6>free shipping</h6>
+						<p>Suffered Alteration in Some Form</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 benefit_col">
+				<div class="benefit_item d-flex flex-row align-items-center">
+					<div class="benefit_icon"><i class="fa fa-money" aria-hidden="true"></i></div>
+					<div class="benefit_content">
+						<h6>cach on delivery</h6>
+						<p>The Internet Tend To Repeat</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 benefit_col">
+				<div class="benefit_item d-flex flex-row align-items-center">
+					<div class="benefit_icon"><i class="fa fa-undo" aria-hidden="true"></i></div>
+					<div class="benefit_content">
+						<h6>45 days return</h6>
+						<p>Making it Look Like Readable</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 benefit_col">
+				<div class="benefit_item d-flex flex-row align-items-center">
+					<div class="benefit_icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
+					<div class="benefit_content">
+						<h6>opening all week</h6>
+						<p>8AM - 09PM</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

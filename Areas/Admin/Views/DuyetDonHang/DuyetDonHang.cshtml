@@ -1,0 +1,108 @@
+﻿
+@{
+    ViewData["Title"] = "DuyetDonHang";
+    Layout = "~/Views/Shared/LayoutAdmin/_LayoutAdmin.cshtml";
+}
+
+@section Scripts{
+    <script src="~/libararyadmin/js/plugins/datatables/datatables.min.js"></script>
+    <script src="~/libararyadmin/ajax/xetduyetdonhang.js"></script>
+}
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Xét duyệt đơn hàng</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">Trang chủ</a>
+            </li>
+            <li>
+                <a>Đặt hàng</a>
+            </li>
+            <li class="active">
+                <a href="#modalDonDatHang" data-toggle="modal" style="color:cadetblue" id="DanhSachTaiKhoan"><strong>Danh sách duyệt</strong></a>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+
+<div class="row wrapper border-bottom white-bg ibox-body m-t-5" style="margin-top: 10px;">
+    <div class="ibox float-e-margins">
+        <div class="hr-line-dashed"></div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="tab-1" class="tab-pane active">
+                    <div class="panel-body" style="padding:0">
+                        <div class="col-sm-12">
+                            <div class="ibox-content" style="padding:0">
+                                <div class="table-responsive">
+                                    <table id="tblChiTietDonDat"
+                                           data-classes="table table-striped table-bordered table-hover"
+                                           data-toggle="table"
+                                           data-mobile-responsive="true"
+                                           data-search="true"
+                                           data-fixed-columns="true"
+                                           data-show-export="true"
+                                           data-pagination="true"
+                                           data-page-size="5"
+                                           data-page-list="[15, 25, 35, all]">
+                                        <thead>
+                                            <tr>
+                                                <th data-field="ChucNang" data-width="5" data-formatter="ChucNang">Chức năng</th>
+                                                <th data-field="urlAnh" data-formatter="Anh" data-width="115px">Ảnh</th>
+                                                <th data-field="tenLoai" data-sortable='true'>Tên đồng hồ</th>
+                                                <th data-field="soLuongMua">Số lượng mua</th>
+                                                <th data-field="SoLuongKho">Số lượng kho</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalDonDatHang" class="modal fade" aria-hidden="true">
+    <div class="modal-dialog model-lg" style="height:30%; width:90%">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="form-group row" style="padding-left:15px">
+                    <button type="button" class="btn btn-w-m btn-danger btn-sm" data-dismiss="modal"><i class="fa fa-backward"></i> Quay lại</button>
+                </div>
+                <div class="row">
+                    <div class="ibox-content">
+                        <div class="table-responsive">
+                            <table id="tblDonDat"
+                                   data-classes="table table-striped table-bordered table-hover"
+                                   data-toggle="table"
+                                   data-mobile-responsive="true"
+                                   data-search="true"
+                                   data-fixed-columns="true"
+                                   data-show-export="true"
+                                   data-pagination="true"
+                                   data-page-size="5"
+                                   data-page-list="[15, 25, 35, all]">
+                                <thead>
+                                    <tr>
+                                        <th data-field="ngayLap">Ngày lập</th>
+                                        <th data-field="HoTen" data-formatter="TenKhachHang">Tên khách hàng</th>
+                                        <th data-field="soDienThoai">Số điện thoại</th>
+                                        <th data-field="diaChi">Địa chỉ</th>
+                                        <th data-field="email">Email</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

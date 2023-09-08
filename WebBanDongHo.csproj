@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="7.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Common\Areas\Admin\Data\" />
+    <Folder Include="Common\Areas\Admin\Models\" />
+    <Folder Include="wwwroot\ImageDongHo\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Common\Areas\Admin\Views\Access\Login.cshtml" />
+    <None Include="Common\Areas\Admin\Views\AcountRegeterEvent\AcountRegeter.cshtml" />
+    <None Include="Common\Areas\Admin\Views\C_QuanLyDongHo\QuanLyDongHo.cshtml" />
+    <None Include="Common\Areas\Admin\Views\DanhMucDongHo\ViewDanhMucDongHo.cshtml" />
+    <None Include="Common\Areas\Admin\Views\DanhMucHeThong\ViewDanhMucHeThong.cshtml" />
+    <None Include="Common\Areas\Admin\Views\DatHang\DatHang.cshtml" />
+    <None Include="Common\Areas\Admin\Views\DuyetDonHang\DuyetDonHang.cshtml" />
+    <None Include="Common\Areas\Admin\Views\Home\DashBoard.cshtml" />
+    <None Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Home\Privacy.cshtml" />
+    <None Include="Views\LoginClient\LoginClient.cshtml" />
+    <None Include="Views\Product\Product.cshtml" />
+    <None Include="Views\RegesterClient\RegesterClient.cshtml" />
+    <None Include="Views\SanPhamDetail\SanPhamDetail.cshtml" />
+    <None Include="Views\SanPham\SanPham.cshtml" />
+    <None Include="Views\Shared\Error.cshtml" />
+    <None Include="Views\Shared\LayoutAdmin\_LayoutAdmin.cshtml" />
+    <None Include="Views\Shared\LayoutAdmin\_PartialFooter.cshtml" />
+    <None Include="Views\Shared\LayoutAdmin\_PartialMenuAdmin.cshtml" />
+    <None Include="Views\Shared\LayoutClient\PartialViewFooter.cshtml" />
+    <None Include="Views\Shared\LayoutClient\_LayoutClient.cshtml" />
+    <None Include="Views\Shared\LayoutClient\_PartialViewMenu.cshtml" />
+    <None Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Include="Views\_ViewImports.cshtml" />
+    <None Include="Views\_ViewStart.cshtml" />
+  </ItemGroup>
+
+</Project>

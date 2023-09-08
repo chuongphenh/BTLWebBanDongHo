@@ -1,0 +1,345 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Giải pháp phần mềm quản lý Công việc</title>
+    <link href="~/InspiniaMaster/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/InspiniaMaster/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="~/InspiniaMaster/css/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+    <link href="~/InspiniaMaster/css/animate.css" rel="stylesheet">
+    <link href="~/InspiniaMaster/css/style.css" rel="stylesheet">
+    <link href="~/Scripts/Plugin/bootstrap-table.css" rel="stylesheet" />
+    <link href="~/InspiniaMaster/css/plugins/toastr/toastr.min.css" rel="stylesheet" />
+    <link href="~/InspiniaMaster/css/plugins/iCheck/custom.css" rel="stylesheet" />
+
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    @RenderSection("Styles", false)
+    <style type="text/css">
+        .navbar-nav li {
+            position: relative;
+        }
+
+        .navbar-nav li:not(:last-child):after {
+            content: '';
+            position: absolute;
+            right: -2px;
+            width: 1px;
+            height: 80%;
+            top: 10%;
+            background: #eeeeee;
+        }
+
+        .dropdown-submenu {
+            position: relative;
+        }
+
+        .dropdown-submenu .dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -1px;
+        }
+    </style>
+
+</head>
+
+<body class="">
+
+    <div id="wrapper">
+
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <span>
+                                <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+                            </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                                    <span class="block m-t-xs">
+                                        <strong class="font-bold">Tên tài khoản</strong>
+                                    </span>
+                                    <!--<span class="text-muted text-xs block">Quản trị viên <b class="caret"></b></span>-->
+                                </span>
+                            </a>
+                            <!--<ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a href="profile.html">Profile</a></li>
+                                <li><a href="contacts.html">Contacts</a></li>
+                                <li><a href="mailbox.html">Mailbox</a></li>
+                                <li class="divider"></li>
+                                <li><a href="login.html">Logout</a></li>
+                            </ul>-->
+                        </div>
+
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Menu bậc</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="#">Bậc 1</a></li>
+                            <li><a href="#">Bậc 2</a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Menu đơn</span></a>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label">Menu Levels </span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li>
+                                <a href="#">Third Level <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="#">Third Level Item</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Third Level Item</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Third Level Item</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                            <li><a href="#">Second Level Item</a></li>
+                            <li>
+                                <a href="#">Second Level Item</a>
+                            </li>
+                            <li>
+                                <a href="#">Second Level Item</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                       
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li>
+                            <span class="m-r-sm text-muted welcome-message">Phần mềm quản lý công việc</span>
+                        </li>
+                        <!--<li class="dropdown">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-messages">
+                                <li>
+                                    <div class="dropdown-messages-box">
+                                        <a href="profile.html" class="pull-left">
+                                            <img alt="image" class="img-circle" src="img/a7.jpg">
+                                        </a>
+                                        <div class="media-body">
+                                            <small class="pull-right">46h ago</small>
+                                            <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
+                                            <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="dropdown-messages-box">
+                                        <a href="profile.html" class="pull-left">
+                                            <img alt="image" class="img-circle" src="img/a4.jpg">
+                                        </a>
+                                        <div class="media-body ">
+                                            <small class="pull-right text-navy">5h ago</small>
+                                            <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>
+                                            <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="dropdown-messages-box">
+                                        <a href="profile.html" class="pull-left">
+                                            <img alt="image" class="img-circle" src="img/profile.jpg">
+                                        </a>
+                                        <div class="media-body ">
+                                            <small class="pull-right">23h ago</small>
+                                            <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
+                                            <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="text-center link-block">
+                                        <a href="mailbox.html">
+                                            <i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-alerts">
+                                <li>
+                                    <a href="mailbox.html">
+                                        <div>
+                                            <i class="fa fa-envelope fa-fw"></i> You have 16 messages
+                                            <span class="pull-right text-muted small">4 minutes ago</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="profile.html">
+                                        <div>
+                                            <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                            <span class="pull-right text-muted small">12 minutes ago</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="grid_options.html">
+                                        <div>
+                                            <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                            <span class="pull-right text-muted small">4 minutes ago</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="text-center link-block">
+                                        <a href="notifications.html">
+                                            <strong>See All Alerts</strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>-->
+
+
+                        <li>
+                            <a href="login.html">
+                                <i class="fa fa-sign-out"></i> Đăng xuất
+                            </a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+            <!--<div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-sm-4">
+                    <h2>This is main title</h2>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="index.html">This is</a>
+                        </li>
+                        <li class="active">
+                            <strong>Breadcrumb</strong>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-sm-8">
+                    <div class="title-action">
+                        <a href="" class="btn btn-primary">This is action area</a>
+                    </div>
+                </div>
+            </div>-->
+
+            <div class="wrapper wrapper-content">
+                <div class="row">
+                    @RenderBody()
+                </div>
+            
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="~/InspiniaMaster/js/jquery-3.1.1.min.js"></script>
+    <script src="~/InspiniaMaster/js/bootstrap.min.js"></script>
+    <script src="~/InspiniaMaster/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="~/InspiniaMaster/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- Custom and plugin javascript -->
+    <script src="~/InspiniaMaster/js/inspinia.js"></script>
+    <script src="~/InspiniaMaster/js/plugins/pace/pace.min.js"></script>
+    <!-- Flot -->
+    <script src="~/InspiniaMaster/js/plugins/flot/jquery.flot.js"></script>
+    <script src="~/InspiniaMaster/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="~/InspiniaMaster/js/plugins/flot/jquery.flot.resize.js"></script>
+    <!-- ChartJS-->
+    <script src="~/InspiniaMaster/js/plugins/chartJs/Chart.min.js"></script>
+    <!-- Peity -->
+    <script src="~/InspiniaMaster/js/plugins/peity/jquery.peity.min.js"></script>
+    <!-- Peity demo -->
+    <script src="~/InspiniaMaster/js/demo/peity-demo.js"></script>
+    <script src="~/Scripts/Plugin/bootstrap-table.js"></script>
+    <script src="~/Scripts/Plugin/bootbox.min.js"></script>
+    <script src="~/InspiniaMaster/js/plugins/toastr/toastr.min.js"></script>
+    <script src="~/Scripts/Plugin/XNoti.js"></script>
+    <script src="~/InspiniaMaster/js/plugins/iCheck/icheck.min.js"></script>
+    <script src="~/Scripts/Plugin/XLoading.js"></script>
+    <script src="~/Scripts/Plugin/mustache/mustache.min.js"></script>
+    <script src="~/InspiniaMaster/js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="~/Scripts/Plugin/autoNumeric.js"></script>
+    <script src="~/Scripts/ContronllerScripts/NhanThongBao.js"></script>
+
+    @RenderSection("Scripts", false)
+    <script>
+        $(function () {
+            $('#btn_LogOut').off('click').on('click', function () {
+
+
+                $.ajax({
+                    cache: false,
+                    type: "POST",
+                    url: "/Accounts/LogOff",
+                    success: function (data) {
+                        if (data === 1) {
+                            window.location.href = '/Accounts/Login';
+                        }
+                    },
+                    error: function () {
+                        bootbox.alert('Có lỗi khi đăng xuất');
+
+                    }
+                });
+
+            });
+
+
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+                labelHover: false,
+                cursor: true,
+            });
+
+            $('.dropdown-submenu a.test').on("click", function (e) {
+                $(this).next('ul').toggle();
+                e.stopPropagation();
+                e.preventDefault();
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

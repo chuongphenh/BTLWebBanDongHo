@@ -1,0 +1,142 @@
+﻿<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trang Chủ</title>
+    <link href="~/libararyadmin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/libararyadmin/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="~/libararyadmin/css/animate.css" rel="stylesheet">
+    <link href="~/libararyadmin/css/style.css" rel="stylesheet">
+    <link href="~/libararyadmin/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="~/libararyadmin/pluginbootrap/bootstrap-table.min.css" rel="stylesheet" />
+    <link href="~/libararyadmin/css/plugins/chosen/chosen.css" rel="stylesheet" />
+    <link href="~/libararyadmin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" />
+    <link href="~/libararyadmin/css/plugins/toastr/toastr.min.css" rel="stylesheet" />
+    <link href="~/libararyadmin/css/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="wrapper">
+        @await Html.PartialAsync("/Views/Shared/LayoutAdmin/_PartialMenuAdmin.cshtml")
+        <div id="page-wrapper" class="gray-bg">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-danger " href="#"><i class="fa fa-bars"></i> </a>
+                        <form role="search" class="navbar-form-custom" action="search_results.html">
+                            <div class="form-group">
+                                <input type="text" placeholder="tìm kiếm ..." class="form-control" name="top-search" id="top-search">
+                            </div>
+                        </form>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li>
+                            <span class="m-r-sm text-muted welcome-message">Quản lý bán đồng hồ.</span>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                <i class="fa fa-bell"></i>  <span class="label label-primary" id="CountThu"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-alerts"  id="ThongBao">
+                            
+                            </ul>
+                        </li>
+                        <li>
+                            <a asp-controller="Access" asp-action="Logout">
+                                <i class="fa fa-sign-out"></i> Thoát
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </nav>
+            </div>
+            <div class="wrapper wrapper-content">
+                @RenderBody()
+            </div>
+            @await Html.PartialAsync("/Views/Shared/LayoutAdmin/_PartialFooter.cshtml")
+
+        </div>
+    </div>
+    <script id="data-thong-bao" type="x-tmpl-mustache">
+            <li>
+                <a href="{{DuongDan}}">
+                    <div>
+                        <i class="fa fa-envelope fa-fw"></i> {{NoiDungGui}}
+                    </div>
+                </a>
+            </li>            
+    </script>
+
+    <!-- Mainly scripts -->
+    <script src="~/libararyadmin/js/jquery-3.1.1.min.js"></script>
+    <script src="~/libararyadmin/js/bootstrap.min.js"></script>
+    <script src="~/libararyadmin/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="~/libararyadmin/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- Custom and plugin javascript -->
+    <script src="~/libararyadmin/js/inspinia.js"></script>
+    <script src="~/libararyadmin/js/plugins/pace/pace.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="~/libararyadmin/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Sparkline -->
+    <script src="~/libararyadmin/js/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script src="~/libararyadmin/js/plugins/iCheck/icheck.min.js"></script>
+    <script src="~/libararyadmin/js/plugins/toastr/toastr.min.js"></script>
+    <script src="~/plugin/xnoti.js"></script>
+    <script src="~/libararyadmin/js/plugins/sweetalert/sweetalert.min.js"></script>
+    <!-- Sparkline demo data  -->
+    <script src="~/libararyadmin/js/demo/sparkline-demo.js"></script>
+    <script src="~/plugin/bootstrap-filestyle.min.js"></script>
+    <script src="~/plugin/bootstrap-table.js"></script>
+    <script src="~/plugin/bootstrap-table.min.js"></script>
+    <script src="~/plugin/bootstrap-table-vi-vn.js"></script>
+    <script src="~/plugin/mustache/mustache.min.js"></script>
+
+    <script>
+        var myController = {
+            init: function () {
+                myController.LoadData();
+            },
+
+            LoadData: function () {
+                $.ajax({
+                    url: '/Admin/Home/LoadData',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (response) {
+                        if (response.status) {
+                            var lstUserName = response.lstUserName;
+                            var lstThongBao = response.lstThongBao;
+
+                            $("#userName").html(lstUserName.userName);
+                            if (lstUserName.urlAnh != "/DocumentImage/") {
+                                $("#ImageUser").attr('src', lstUserName.urlAnh);
+                                $("#ImageUser2").attr('src', lstUserName.urlAnh);
+                            }
+
+                              if (lstThongBao != null) {
+                                var html = '';
+                                var template = $('#data-thong-bao').html();
+                                $.each(lstThongBao, function (i, item) {
+                                    html += Mustache.render(template, {
+                                        NoiDungGui: item.noiDungGui,
+                                        DuongDan: item.duongDan,
+                                    });
+                                });
+
+                                $('#ThongBao').html(html);
+                                $('#CountThu').html(response.thuGui);
+                            }
+                        }
+                    }
+                })
+            },
+        }
+        myController.init();
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

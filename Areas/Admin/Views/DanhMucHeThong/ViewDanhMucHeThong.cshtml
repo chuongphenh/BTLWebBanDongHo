@@ -1,0 +1,103 @@
+﻿@{
+    ViewData["Title"] = "Danh mục hệ thống";
+    Layout = "~/Views/Shared/LayoutAdmin/_LayoutAdmin.cshtml";
+}
+
+
+@section Scripts{
+    <script src="~/libararyadmin/js/plugins/datatables/datatables.min.js"></script>
+    <script src="~/libararyadmin/js/plugins/chosen/chosen.jquery.js"></script>
+    <script src="~/libararyadmin/ajax/danhmuchethong.js"></script>
+}
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Danh sách hệ thống</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">Trang chủ</a>
+            </li>
+            <li>
+                <a>Danh mục hệ thống</a>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6" style="padding:0">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Danh mục hệ thống</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <label>Phân loại danh mục<font color="red">*</font>: </label>
+                        <select class="form-control" id="cbLoaiDanhMuc">
+                            <option value="">--Chọn phân loại danh mục--</option>
+                            <option value="Danh mục chất liệu dây">Danh mục chất liệu dây</option>
+                            <option value="Danh mục chất liệu mặt">Danh mục chất liệu mặt</option>
+                            <option value="Danh mục chất liệu vỏ">Danh mục chất liệu vỏ</option>
+                            <option value="Danh mục thương hiệu">Danh mục thương hiệu</option>
+                            <option value="Danh mục hãng sản xuất">Danh mục hãng sản xuất</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="ibox-content" style="padding:0">
+                            <div class="table-responsive">
+                                <table id="tblDanhMuc"
+                                       data-classes="table table-striped table-bordered table-hover"
+                                       data-toggle="table"
+                                       data-mobile-responsive="true"
+                                       data-search="true"
+                                       data-fixed-columns="true"
+                                       data-show-export="true"
+                                       data-pagination="true"
+                                       data-page-size="10"
+                                       data-page-list="[10, 15, 25, all]">
+                                    <thead>
+                                        <tr>
+                                            <th data-field="maDanhMuc">Mã danh mục</th>
+                                            <th data-field="tenDanhMuc">Tên danh mục</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6" style="padding-right:0">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Thông tin danh mục</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="ibox-title" style="padding-left:0">
+                    <button type="button" class="btn btn btn-primary btn-sm" id="btnTaoMoi"><i class="fa fa-plus"></i> Tạo mới</button>
+                    <button type="button" class="btn btn btn-success btn-sm" id="btnLuu"><i class="fa fa-save"></i> Lưu</button>
+                    <button type="button" class="btn btn btn-danger btn-sm" id="btnXoaDanhMuc"><i class="fa fa-remove"></i> Xóa</button>
+                </div>
+                <div class="row" style="padding:10px">
+                    <div class="form-horizontal">
+                        <input type="hidden" class="form-control" id="IdDanhMuc">
+                        <div class="form-group col-sm-4">
+                            <label>Mã danh mục<font color="red">*</font>: </label>
+                            <input type="text" placeholder="nhập mã danh mục ..." class="form-control" id="MaDanhMuc">
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label>Tên danh mục: </label>
+                            <input type="text" placeholder="nhập tên danh mục ..." class="form-control" id="TenDanhMuc">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
